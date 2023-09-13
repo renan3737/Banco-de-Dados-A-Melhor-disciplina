@@ -36,3 +36,46 @@ group by curso;
 select produto, round(avg(receita),2) as receitas_media
 from vendas 
 group by produto;
+
+-- Exercicio 9
+select produto, sum(receita) as receita_total 
+from vendas 
+group by produto
+having receita_total > 10000;
+
+-- Exercicio 10
+select nome, count(livros.autor_id) as livros_total_autor 
+from autores 
+inner join livros on autores.id = livros.autor_id 
+group by nome
+having livros_total_autor >= 2;
+
+-- Exercicio 11
+select livros.titulo, autores.nome 
+from livros 
+inner join autores on livros.autor_id = autores.id;
+
+-- Exercicio 12
+select nome, curso 
+from alunos 
+left join matriculas 
+on alunos.id = matriculas.aluno_id;
+
+-- Exercicio 13
+select nome, titulo 
+from autores 
+left join livros 
+on autores.id = livros.autor_id;
+
+
+-- Exercicio 14
+select curso, nome 
+from alunos 
+right join matriculas 
+on matriculas.aluno_id = alunos.id;
+
+-- Exercicio 15
+select curso, nome 
+from alunos 
+inner join matriculas 
+on matriculas.aluno_id = alunos.id;
