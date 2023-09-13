@@ -79,3 +79,31 @@ select curso, nome
 from alunos 
 inner join matriculas 
 on matriculas.aluno_id = alunos.id;
+
+-- Exercicio 16
+select nome, count(autor_id) as livros_total_autor 
+from autores 
+inner join livros on autores.id = livros.autor_id  
+group by nome
+order by livros_total_autor DESC 
+limit 1; 
+
+-- Exercicio 17
+select produto, sum(receita) as receitas_produto
+from vendas 
+group by produto
+order by receitas_produto 
+limit 1;
+
+-- Exercicio 19
+select nome, count(aluno_id) as matricula_aluno 
+from alunos 
+inner join matriculas 
+on alunos.id = matriculas.aluno_id 
+group by nome;
+
+-- Exercicio 20
+select produto, count(receita) as transacoesDeVendas 
+from vendas 
+group by produto 
+order by transacoesDeVendas desc limit 1; 
